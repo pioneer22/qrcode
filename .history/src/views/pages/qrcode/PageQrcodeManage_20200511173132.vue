@@ -307,11 +307,12 @@
       },
 
       handleChange(file, fileList){
-        this.$refs.upload.clearFiles();
+        console.log("change:",file)
         let fileName = file.name;
 			    let regex = /(.jpg|.jpeg|.gif|.png|.bmp)$/;
 			      if (regex.test(fileName.toLowerCase())) {
               this.childImg = URL.createObjectURL(file.raw)  // 获取URL
+              console.log("this.childImg:",this.childImg)
 			      } else {
 			        this.$message.error('请选择图片文件');
 			      }
@@ -343,6 +344,7 @@
         // this.childData = fileList[0]
         this.childImg = fileList[0].url
         console.log("file:",fileList)
+        this.$refs.upload.clearFiles();
       }
     }
   }
