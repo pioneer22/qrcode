@@ -6,7 +6,7 @@
       </div>
 
       <el-table :data="tableData" :default-sort="{prop: 'id',order: 'ascending'}" style="width: 100%">
-        <el-table-column label="ID" width="150" sortable prop="id">
+        <el-table-column label="ID" width="150" prop="id" sortable>
           <template slot-scope="scope">
             <span>{{ scope.row.id }}</span>
           </template>
@@ -38,27 +38,20 @@
           </template>
         </el-table-column>
 
-        <el-table-column label="操作" fixed="right" width="400">
+        <el-table-column label="操作" fixed="right" width="300">
           <template slot-scope="scope">
-            <el-button size="mini" type="success" @click="handleEditChild(scope.$index, scope.row)">子码列表</el-button>
             <el-button size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)">编辑活码</el-button>
+            <el-button size="mini" type="success" @click="handleEditChild(scope.$index, scope.row)">编辑子码</el-button>
             <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除活码</el-button>
-            <el-button size="mini" type="warning" @click="handleDownload(scope.$index, scope.row)">下载活码</el-button>   
           </template>
         </el-table-column>
       </el-table>
     </el-card>
 
     <el-card class="card" v-if="show===2">
-
-
       <div slot="header">
         <el-button size="mini" @click="handleAddChild">新增子码</el-button>
         <el-button size="mini" @click="backPage">返回上一页</el-button>
-
-        <div style="text-align: center;padding-top: 20px;">
-            <b>子码列表</b>
-        </div>
       </div>
 
       <el-table :data="tableData" style="width: 100%">
@@ -104,9 +97,6 @@
     </el-card>
 
     <el-card class="card" v-if="show===3">
-      <div style="text-align: center;padding-bottom: 20px;font-size: 20px;">
-        <b>{{ childTitle }}</b>
-      </div>
       <el-form :model="childData" :rules="rules" ref="childData" label-width="100px">
         <el-form-item label="子码标题" prop="title">
           <el-input v-model="childData.title" style="width:212px;"></el-input>
@@ -118,16 +108,13 @@
 
         <div style="padding-left: 20px;">
           <el-upload 
-            ref="upload"
             class="upload-demo" 
             action="https://jsonplaceholder.typicode.com/posts/" 
             :show-file-list="false"
             :on-success="handleSuccess"
-            :data="childData"
             :limit="1"
-            :auto-upload="false"
             list-type="picture-card">
-              <img v-if="childImg" :src="childImg" style="width: 100%;height: 100%;">
+              <img v-if="childImg" :src="childImg" class="avatar">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过2M，且只能上传一张图片</div>
           </el-upload>
@@ -154,8 +141,7 @@
         tableData: [{
           id: 1,
           date: '2020-05-01',
-          // img: require('@/assets/img/about/my-logo.png'),
-          img: "https://s1.ax1x.com/2020/05/11/YJubOe.jpg",
+          img: require('@/assets/img/about/my-logo.png'),
           title: '活码1',
           sortid: 2
         },
@@ -170,8 +156,7 @@
         childDatas: [],
         childData: {},
 
-        childImg: '',
-        childTitle: ''
+        childImg: ''
       }
     },
 
@@ -238,35 +223,8 @@
         }).catch(() => { });
       },
 
-      // 下载活码
-      handleDownload(index,row){
-        const image = new Image();
-        // 解决跨域 canvas 污染问题
-        image.setAttribute('crossOrigin','anonymous');
-        image.onload = function(){
-          const canvas = document.createElement('canvas');
-          canvas.width = image.width;
-          canvas.height = image.height;
-          const context = canvas.getContext('2d');
-          context.drawImage(image,0,0,image.width,image.height);
-          const url = canvas.toDataURL('image/png');
-          // 生成一个 a 标签
-          const a = document.createElement('a');
-          // 创建一个点击事件
-          const event = new MouseEvent('click');
-          // 将 a 的 download 属性设置为我们想要下载的图片的名称，若 name 不存在则使用'图片'作为默认名称
-          a.download = row.title || '图片';
-          // 将生成的 URL 设置为 a.href 属性
-          a.href = url;
-          // 触发 a 的点击事件
-          a.dispatchEvent(event);
-        };
-        image.src = row.img
-      },
-
       // 新增子码
       handleAddChild() {
-        this.childTitle = '新增子码'
         this.show = 3
         this.childData = {
           title: '子码标题',
@@ -277,7 +235,6 @@
 
       // 编辑选中子码
       handleEditCurrentChild(index, row) {
-        this.childTitle = '编辑子码'
         this.childData = row
         this.childData['name'] = this.childData['title']
         this.childData['url'] = this.childData['img']
@@ -309,29 +266,20 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // 手动上传文件,当点击确定再上传图片
-            this.$refs.upload.submit();
-
             // 将数据图片传到后台处理
-            // console.log("submitForm", this.fileList)
-            // alert('submit!')
+            console.log("this.fileList:", this.fileList)
+            alert('submit!')
           } else {
             return false
           }
         })
       },
 
-      beforeUpload(file){
-        console.log("beforeUpload:",file)
-      },
-
       // 图片上传成功
       handleSuccess(response, file, fileList){
         // this.childImg = res.data
         // this.childData = fileList[0]
-        this.childImg = fileList[0].url
         console.log("file:",fileList)
-        this.$refs.upload.clearFiles();
       }
     }
   }

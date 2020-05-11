@@ -240,6 +240,7 @@
 
       // 下载活码
       handleDownload(index,row){
+        console.log(row.img)
         const image = new Image();
         // 解决跨域 canvas 污染问题
         image.setAttribute('crossOrigin','anonymous');

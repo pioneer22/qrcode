@@ -43,7 +43,7 @@
             <el-button size="mini" type="success" @click="handleEditChild(scope.$index, scope.row)">子码列表</el-button>
             <el-button size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)">编辑活码</el-button>
             <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除活码</el-button>
-            <el-button size="mini" type="warning" @click="handleDownload(scope.$index, scope.row)">下载活码</el-button>   
+            <el-button size="mini" type="danger" @click="handleDownload(scope.$index, scope.row)">下载活码</el-button>   
           </template>
         </el-table-column>
       </el-table>
@@ -155,7 +155,7 @@
           id: 1,
           date: '2020-05-01',
           // img: require('@/assets/img/about/my-logo.png'),
-          img: "https://s1.ax1x.com/2020/05/11/YJubOe.jpg",
+          img: "http://e.hiphotos.baidu.com/zhidao/pic/item/d62a6059252dd42a1c362a29033b5bb5c9eab870.jpg",
           title: '活码1',
           sortid: 2
         },
@@ -240,28 +240,7 @@
 
       // 下载活码
       handleDownload(index,row){
-        const image = new Image();
-        // 解决跨域 canvas 污染问题
-        image.setAttribute('crossOrigin','anonymous');
-        image.onload = function(){
-          const canvas = document.createElement('canvas');
-          canvas.width = image.width;
-          canvas.height = image.height;
-          const context = canvas.getContext('2d');
-          context.drawImage(image,0,0,image.width,image.height);
-          const url = canvas.toDataURL('image/png');
-          // 生成一个 a 标签
-          const a = document.createElement('a');
-          // 创建一个点击事件
-          const event = new MouseEvent('click');
-          // 将 a 的 download 属性设置为我们想要下载的图片的名称，若 name 不存在则使用'图片'作为默认名称
-          a.download = row.title || '图片';
-          // 将生成的 URL 设置为 a.href 属性
-          a.href = url;
-          // 触发 a 的点击事件
-          a.dispatchEvent(event);
-        };
-        image.src = row.img
+        console.log(row)
       },
 
       // 新增子码
