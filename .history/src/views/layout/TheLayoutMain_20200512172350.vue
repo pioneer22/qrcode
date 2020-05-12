@@ -17,7 +17,8 @@
     color: #666666;
     min-height: 100%;
     overflow: visible;
-    min-width: fit-content;
+    /* min-width: fit-content; */
+    width: fit-content;
   }
 
   .main-body {

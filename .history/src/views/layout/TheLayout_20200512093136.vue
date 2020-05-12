@@ -28,9 +28,9 @@
     },
     created() {
       // 判断是否登陆，未登录返回登陆界面
-      /*   if (!localStorage.getItem('user-token')) {
-          this.$router.push('/login')
-        } */
+      if (!localStorage.getItem('user-token')) {
+        this.$router.push('/login')
+      }
     },
     methods: {
       toggleOpen() {

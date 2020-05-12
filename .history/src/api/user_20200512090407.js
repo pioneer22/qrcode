@@ -4,7 +4,7 @@ import staticRouter from '@/router/staticRouter'
 // 登录
 export const requestLogin = params => {
   return request('/api/user/login', params).then(data => {
-    // localStorage.setItem('user-token', JSON.stringify(data.token))
+    localStorage.setItem('user-token', JSON.stringify(data.token))
     return data
   })
 }

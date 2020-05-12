@@ -7,7 +7,6 @@ function resolve (dir) {
 process.env.VUE_APP_VERSION = process.env.BUILD_NUMBER || '-'
 
 module.exports = {
-  publicPath: './', // 系统路径
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src')) // 设置路径别名
@@ -37,4 +36,7 @@ module.exports = {
     // port: '8888' // 设置默认端口
   },
   // publicPath: process.env.VUE_APP_BASE_PATH || '/', // 系统路径
+  publicPath: './', // 系统路径
+  outputDir: 'dist',
+  assetsDir: 'static'
 }

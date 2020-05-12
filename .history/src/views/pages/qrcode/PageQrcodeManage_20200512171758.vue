@@ -342,7 +342,7 @@
 
 <style scoped>
   .card {
-    min-width: fit-content;
+    width: 90%;
   }
 
   .el-table th>>>.cell {

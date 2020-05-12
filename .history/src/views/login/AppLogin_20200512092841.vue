@@ -601,13 +601,7 @@
             const loginParams = {
               username: this.ruleForm.account, password: sha256(this.ruleForm.checkPass)
             }
-
-            if (loginParams.username === 'admin') {
-              this.logining = false
-              this.$router.push('/index')
-            }
-
-            /* requestLogin(loginParams).then(data => {
+            requestLogin(loginParams).then(data => {
               this.logining = false
               this.$message({
                 message: this.$t('login.loginSuccess'),
@@ -617,7 +611,7 @@
             }).catch(err => {
               this.logining = false
               console.log(err)
-            }) */
+            })
           } else {
             return false
           }
