@@ -45,10 +45,6 @@ export const requestUserInfo = params => {
   })
 }
 
-export const requestLogout = params => {
-  return request('/api/user/logout', params)
-}
-
 export const requestChangePassword = params => {
   return request('/api/user/changePassword', params)
 }
@@ -57,6 +53,3 @@ export const requestUserQuery = params => {
   return request('/api/user/query', params)
 }
 
-export const requestPermissionsQuery = params => {
-  return request('/api/user/permissions', params)
-}
