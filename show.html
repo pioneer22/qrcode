@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微信活码</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img {
+    max-width: 70%;
+  }
+
+  .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 5% 0;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+  <div class="app">
+    <img src="" class="img" />
+  </div>
+  <div class="bottom">
+    请长按识别二维码
+  </div>
+
+  <script>
+    $(function () {
+      $('.app').css({ 'height': $(window).height() })
+      function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+      }
+
+      var id = getUrlParam('id')
+      $.ajax({
+        url: 'http://hm.prettyvalley.net/qrcode/index/index',
+        type: 'POST',
+        data: { id: id },
+        dataType: "json",
+        success: function (res) {
+          if (res.code === 200) {
+            $('.img').attr('src', res.data.subcode_url)
+          }
+        },
+        error: function (err) {
+          $('.img').attr('src', '1.png')
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
