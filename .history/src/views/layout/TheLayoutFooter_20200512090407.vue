@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    PrettyValley
+    广州汇美舍天然用品连锁有限公司
   </footer>
 </template>
 

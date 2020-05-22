@@ -130,4 +130,7 @@ new Vue({
   store,
   i18n,
   render: h => h(App)
+  /*   components: {
+      App
+    } */
 }).$mount('#app')
