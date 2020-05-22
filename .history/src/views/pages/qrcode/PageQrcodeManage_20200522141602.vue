@@ -14,9 +14,7 @@
         </el-table-column>
         <el-table-column label="二维码" width="150">
           <template slot-scope="scope">
-            <viewer>
-              <img :src="scope.row.url" class="image" />
-            </viewer>
+            <img :src="scope.row.url" class="image" />
           </template>
         </el-table-column>
         <el-table-column label="活码标题" width="150">
@@ -79,9 +77,7 @@
         </el-table-column>
         <el-table-column label="二维码" width="150">
           <template slot-scope="scope">
-            <viewer>
-              <img :src="scope.row.subcode_url" class="image" />
-            </viewer>
+            <img :src="scope.row.subcode_url" class="image" />
           </template>
         </el-table-column>
         <el-table-column label="子码标题" width="150">
@@ -135,13 +131,13 @@
           <el-input v-model="childData.subcode_title" class="input"></el-input>
         </el-form-item>
 
-        <el-form-item label="子码排序" prop="subcode_sort">
+        <el-form-item label="子码" prop="subcode_sort">
           <el-input v-model="childData.subcode_sort" class="input"></el-input>
         </el-form-item>
 
-        <el-form-item label="设置阈值" prop="toplimit">
+        <!--   <el-form-item label="设置阈值" prop="toplimit">
           <el-input v-model="childData.toplimit" class="input" placeholder="请输入有效扫码次数"></el-input> 次
-        </el-form-item>
+        </el-form-item> -->
 
         <div v-if="childTitle != '编辑子码'">
           <el-form-item label="有效时间" prop="validity">

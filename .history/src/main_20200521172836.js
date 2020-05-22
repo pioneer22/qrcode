@@ -55,16 +55,8 @@ import myZhLocale from './assets/lang/zh-cn'
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import ElementLocale from 'element-ui/lib/locale'
-import axios from 'axios'
-import Viewer from 'v-viewer'
-import 'viewerjs/dist/viewer.css'
 
 Vue.config.productionTip = false
-
-Vue.use(Viewer);
-Viewer.setDefaults({
-  Options: { "inline": true, "button": true, "navbar": true, "title": true, "toolbar": true, "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, "scalable": true, "transition": true, "fullscreen": true, "keyboard": true, "url": "data-source" }
-});
 
 // 按需引入element-ui
 Vue.use(Badge)
@@ -112,12 +104,6 @@ Vue.prototype.$message = Message
 Vue.prototype.$MessageBox = MessageBox
 Vue.prototype.$axios = axios
 
-// 根据环境变量决定是否引入mock
-/* if (process.env.VUE_APP_USE_MOCK || (process.env.NODE_ENV !== 'production' && !process.env.VUE_APP_BACK_END_URL)) {
-  const Mock = require('./mock/index').default
-  Mock.mockData()
-} */
-
 /* vue-i18n */
 Vue.use(VueI18n)
 const messages = {
@@ -136,7 +122,4 @@ new Vue({
   store,
   i18n,
   render: h => h(App)
-  /*   components: {
-      App
-    } */
 }).$mount('#app')

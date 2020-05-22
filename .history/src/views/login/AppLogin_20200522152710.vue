@@ -634,7 +634,6 @@
         })
       },
 
-      // 监听回车事件
       keyupSubmit() {
         document.onkeydown = e => {
           let _key = window.event.keyCode;

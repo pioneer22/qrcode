@@ -206,9 +206,6 @@
         checked: false
       }
     },
-    created() {
-      this.keyupSubmit()
-    },
     mounted() {
       /* eslint-disable */
       var email = document.querySelector('#loginEmail'),
@@ -632,17 +629,7 @@
           message: this.$t('login.forgetPassword'),
           type: 'success'
         })
-      },
-
-      // 监听回车事件
-      keyupSubmit() {
-        document.onkeydown = e => {
-          let _key = window.event.keyCode;
-          if (_key === 13) {
-            this.handleSubmit()
-          }
-        }
-      },
+      }
     }
 
   }

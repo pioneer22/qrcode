@@ -14,9 +14,7 @@
         </el-table-column>
         <el-table-column label="二维码" width="150">
           <template slot-scope="scope">
-            <viewer>
-              <img :src="scope.row.url" class="image" />
-            </viewer>
+            <img :src="scope.row.url" class="image" />
           </template>
         </el-table-column>
         <el-table-column label="活码标题" width="150">
@@ -79,9 +77,7 @@
         </el-table-column>
         <el-table-column label="二维码" width="150">
           <template slot-scope="scope">
-            <viewer>
-              <img :src="scope.row.subcode_url" class="image" />
-            </viewer>
+            <img :src="scope.row.subcode_url" class="image" />
           </template>
         </el-table-column>
         <el-table-column label="子码标题" width="150">
