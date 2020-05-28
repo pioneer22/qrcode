@@ -90,11 +90,13 @@
         }
       },
 
-      'ruleForm.validity': {
+      'ruleFrom.validity': {
         handler() {
           let num = parseInt(this.ruleForm.validity)
-          this.ruleForm.validity = isNaN(num) ? 0 : num
-        }
+          console.log("!!:", num)
+          this.ruleFrom.validity = isNaN(num) ? 7 : num
+        },
+        deep: true
       }
     },
 

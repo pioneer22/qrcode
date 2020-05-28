@@ -257,8 +257,8 @@
 
       'childData.validity': {
         handler() {
-          let num = parseInt(this.childData.validity)
-          this.childData.validity = isNaN(num) ? 0 : num
+          let num = parseInt(this.ruleForm.num)
+          this.childData.validity = isNaN(num) ? 7 : num
         }
       }
     },

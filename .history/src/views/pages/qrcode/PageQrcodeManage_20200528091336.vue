@@ -251,14 +251,7 @@
       'childData.toplimit': {
         handler() {
           let limit = parseInt(this.childData.toplimit)
-          this.childData.toplimit = isNaN(limit) ? 0 : limit
-        }
-      },
-
-      'childData.validity': {
-        handler() {
-          let num = parseInt(this.childData.validity)
-          this.childData.validity = isNaN(num) ? 0 : num
+          this.childData.toplimit = isNaN(limit) ? 0 : (limit > 100 ? 100 : limit)
         }
       }
     },

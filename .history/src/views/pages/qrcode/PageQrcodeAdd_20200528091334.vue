@@ -90,10 +90,10 @@
         }
       },
 
-      'ruleForm.validity': {
+      'ruleFrom.validity': {
         handler() {
-          let num = parseInt(this.ruleForm.validity)
-          this.ruleForm.validity = isNaN(num) ? 0 : num
+          let num = parseInt(this.ruleForm.num)
+          this.ruleFrom.validity = isNaN(num) ? 7 : num
         }
       }
     },

@@ -61,7 +61,7 @@
         ruleForm: {
           title: '',
           num: 100,
-          validity: 7
+          validity: 1
         },
         rules: {
           title: [
@@ -90,11 +90,12 @@
         }
       },
 
-      'ruleForm.validity': {
+      'ruleFrom.validity': {
         handler() {
           let num = parseInt(this.ruleForm.validity)
-          this.ruleForm.validity = isNaN(num) ? 0 : num
-        }
+          this.ruleFrom.validity = isNaN(num) ? 0 : num
+        },
+        deep: true
       }
     },
 

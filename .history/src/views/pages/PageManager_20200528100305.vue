@@ -31,7 +31,7 @@
       </el-table>
     </el-card>
 
-    <div class="pagination">
+    <div>
       <el-pagination background :total="count" @current-change="changeData">
       </el-pagination>
     </div>
@@ -224,11 +224,6 @@
 
   .input {
     width: 250px;
-  }
-
-  .pagination {
-    text-align: center;
-    padding-top: 20px;
   }
 
   .el-table th>>>.cell {

@@ -31,8 +31,8 @@
       </el-table>
     </el-card>
 
-    <div class="pagination">
-      <el-pagination background :total="count" @current-change="changeData">
+    <div>
+      <el-pagination background layout="prev, pager, next" :total="1000">
       </el-pagination>
     </div>
 
@@ -69,8 +69,7 @@
         },
         formLabelWidth: '120px',
         userid: '',
-        count: 0,
-        page: 1
+        count: 0
       }
     },
 
@@ -182,19 +181,11 @@
       },
 
       async getUser() {
-        let params = {
-          page: this.page
-        }
-        let res = await requestUser(params)
+        let res = await requestUser()
         if (res.code === 200) {
           this.tableData = res.data.data
           this.count = res.data.count
         }
-      },
-
-      changeData(page) {
-        this.page = page
-        this.getUser()
       },
 
       openInsert() {
@@ -224,11 +215,6 @@
 
   .input {
     width: 250px;
-  }
-
-  .pagination {
-    text-align: center;
-    padding-top: 20px;
   }
 
   .el-table th>>>.cell {

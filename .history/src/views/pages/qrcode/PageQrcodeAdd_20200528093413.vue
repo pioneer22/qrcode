@@ -92,8 +92,10 @@
 
       'ruleForm.validity': {
         handler() {
+          console.log("!!:", this.ruleForm.validity)
           let num = parseInt(this.ruleForm.validity)
-          this.ruleForm.validity = isNaN(num) ? 0 : num
+          console.log("num:", num)
+          // this.ruleFrom.validity = isNaN(num) ? 7 : num
         }
       }
     },
